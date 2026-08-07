@@ -8,26 +8,26 @@ import { VisualPortfolio } from '../pingmian-site/src/main.jsx'
 const asset = path => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 const projects = [
-  { id:'01', name:'KS EVO', cn:'?????????', type:'SIM RACING / HMI', year:'2026', image:asset('/visual/project-ks-evo.png'), pages:[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], color:'#ff5435', note:'?????????????????????????????????????????', tags:['RESEARCH','ERGONOMICS','CMF'] },
-  { id:'02', name:'ASAR', cn:'?? AR ??', type:'WEARABLE / HEALTH', year:'2025', image:asset('/visual/asar-original.jpg'), pages:[20,21,22,23,24,25,26,27,28,29,30,31,32,33,34], color:'#98a99f', note:'???????????????????????????????????', tags:['INSIGHT','WEARABLE','TECH'] },
-  { id:'03', name:'VCRE', cn:'?????????', type:'MEDICAL / EXOSKELETON', year:'2025', image:asset('/visual/project-vcre.png'), pages:[35,36,37,38,39,40,41,42], color:'#5b6b78', note:'?????????????????????????????????????', tags:['MEDICAL','MODULAR','HUMAN FACTOR'] },
-  { id:'04', name:'ALECS', cn:'?????????', type:'MOBILITY / SPACE', year:'2025', image:asset('/visual/project-alecs.webp'), pages:[43,44,45,46,47,48,49,50,51,52], color:'#b9b9b2', note:'??????????????????????????????????????', tags:['MOBILITY','SYSTEM','SPACE'] }
+  { id:'01', name:'KS EVO', cn:'\u8d5b\u8f66\u6a21\u62df\u5668\u6982\u5ff5\u8bbe\u8ba1', type:'SIM RACING / HMI', year:'2026', image:asset('/visual/project-ks-evo.png'), pages:[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], color:'#ff5435', note:'\u5c06\u89e6\u63a7\u3001\u663e\u793a\u4e0e\u4eba\u673a\u5de5\u5b66\u63a7\u5236\u533a\u6574\u5408\u8fdb\u4e13\u4e1a\u8d5b\u8f66\u65b9\u5411\u76d8\uff0c\u5728\u9ad8\u901f\u72b6\u6001\u4e0b\u4fdd\u6301\u4fe1\u606f\u4e0e\u64cd\u4f5c\u6e05\u6670\u3002', tags:['RESEARCH','ERGONOMICS','CMF'] },
+  { id:'02', name:'ASAR', cn:'\u9632\u6655\u0020\u0041\u0052\u0020\u773c\u955c', type:'WEARABLE / HEALTH', year:'2025', image:asset('/visual/asar-original.jpg'), pages:[20,21,22,23,24,25,26,27,28,29,30,31,32,33,34], color:'#98a99f', note:'\u4ee5\u89c6\u89c9\u8865\u507f\u3001\u524d\u5ead\u8c03\u8282\u4e0e\u55c5\u89c9\u5e72\u9884\u5efa\u7acb\u591a\u611f\u5b98\u534f\u540c\u4f53\u9a8c\uff0c\u8ba9\u9ad8\u9891\u51fa\u884c\u56de\u5f52\u8212\u9002\u3002', tags:['INSIGHT','WEARABLE','TECH'] },
+  { id:'03', name:'VCRE', cn:'\u810a\u67f1\u77eb\u6b63\u5eb7\u590d\u5916\u9aa8\u9abc', type:'MEDICAL / EXOSKELETON', year:'2025', image:asset('/visual/project-vcre.png'), pages:[35,36,37,38,39,40,41,42], color:'#5b6b78', note:'\u5728\u533b\u7597\u7ea7\u77eb\u6b63\u4e0e\u65e5\u5e38\u5316\u5eb7\u590d\u4e4b\u95f4\u5bfb\u627e\u5e73\u8861\uff0c\u7528\u6a21\u5757\u5316\u652f\u6491\u56de\u5e94\u771f\u5b9e\u7a7f\u6234\u4e0e\u5eb7\u590d\u573a\u666f\u3002', tags:['MEDICAL','MODULAR','HUMAN FACTOR'] },
+  { id:'04', name:'ALECS', cn:'\u65e0\u4eba\u6708\u8868\u52d8\u63a2\u91c7\u96c6\u8f66', type:'MOBILITY / SPACE', year:'2025', image:asset('/visual/project-alecs.webp'), pages:[43,44,45,46,47,48,49,50,51,52], color:'#b9b9b2', note:'\u9762\u5411\u6708\u8868\u8d44\u6e90\u63a2\u6d4b\u4e0e\u91c7\u6837\u4efb\u52a1\uff0c\u7528\u9ad8\u673a\u52a8\u60ac\u67b6\u3001\u611f\u77e5\u5355\u5143\u548c\u673a\u68b0\u81c2\u6784\u6210\u5b8c\u6574\u4efb\u52a1\u95ed\u73af\u3002', tags:['MOBILITY','SYSTEM','SPACE'] }
 ]
 const pageSrc = number => asset('/portfolio/pages/p-' + String(number).padStart(2,'0') + '.jpg')
 const archivePages = [54,55,56,57,58,59,60]
-const archiveLabels = ['???????','??????','??????','???????','??????','?????','????']
+const archiveLabels = ['\u5f55\u53d6\u901a\u77e5\u4e66\u8bbe\u8ba1','\u54c1\u724c\u6807\u5fd7\u8bbe\u8ba1','\u5e7f\u544a\u89c6\u89c9\u8bbe\u8ba1','\u673a\u68b0\u81c2\u9020\u578b\u8bbe\u8ba1','\u4ea7\u54c1\u6e32\u67d3\u7ec3\u4e60','\u6982\u5ff5\u8f66\u8bbe\u8ba1','\u624b\u7ed8\u7ec3\u4e60']
 const stripPages = Array.from({length:61},(_,index)=>index+1)
 const indexProjects = [
   ...projects.map((project,index)=>({...project,indexImage:['/visual/index-ks.png','/visual/index-asar.png','/visual/index-vcre.png','/visual/index-alecs.png'].map(asset)[index],target:'#case-' + project.id})),
-  {id:'05',name:'GRAPHIC & ARCHIVE',cn:'?????????',type:'VISUAL / ARCHIVE',indexImage:asset('/visual/index-archive.png'),target:'#archive'}
+  {id:'05',name:'GRAPHIC & ARCHIVE',cn:'\u5e73\u9762\u8bbe\u8ba1\u4e0e\u4f5c\u54c1\u5408\u96c6',type:'VISUAL / ARCHIVE',indexImage:asset('/visual/index-archive.png'),target:'#archive'}
 ]
-const awardItems = ['?? 2026 ?? iF ???','?? MUSE ????? ?2','?? Muse ????','MSI ???????????','?? QQ ??????????','?????????????','???????????','???????????????','???? CMBA ???','??????????','?????????????','SGADC ???????????','?????????????','??????????????????']
+const awardItems = ['\u5165\u56f4\u0020\u0032\u0030\u0032\u0036\u0020\u5fb7\u56fd\u0020\u0069\u0046\u0020\u8bbe\u8ba1\u5956','\u7f8e\u56fd\u0020\u004d\u0055\u0053\u0045\u0020\u8bbe\u8ba1\u5956\u94f6\u5956\u0020\u00d7\u0032','\u7f8e\u56fd\u0020\u004d\u0075\u0073\u0065\u0020\u8bbe\u8ba1\u94dc\u5956','\u004d\u0053\u0049\u0020\u5fae\u661f\u79d1\u6280\u521b\u4f5c\u5927\u8d5b\u4f18\u79c0\u5956','\u5165\u56f4\u0020\u0051\u0051\u0020\u97f3\u4e50\u8f66\u8f7d\u97f3\u4e50\u63a7\u4ef6\u5927\u8d5b','\u4e2d\u56fd\u597d\u521b\u610f\u8bbe\u8ba1\u5927\u8d5b\u7701\u7ea7\u5956\u9879','\u672a\u6765\u8bbe\u8ba1\u5e08\u5927\u8d5b\u7701\u7ea7\u5956\u9879','\u5168\u56fd\u5927\u5b66\u751f\u5de5\u4e1a\u8bbe\u8ba1\u5927\u8d5b\u7701\u7ea7\u5956\u9879','\u4e0a\u6d77\u5e7f\u544a\u0020\u0043\u004d\u0042\u0041\u0020\u521b\u610f\u5956','\u4e24\u5cb8\u65b0\u9510\u8bbe\u8ba1\u7ade\u8d5b\u5956\u9879','\u534e\u590f\u5956\u6587\u5316\u827a\u672f\u8bbe\u8ba1\u5927\u8d5b\u5956\u9879','\u0053\u0047\u0041\u0044\u0043\u0020\u65b0\u52a0\u5761\u91d1\u6d77\u827a\u672f\u8bbe\u8ba1\u5927\u5956','\u5927\u5b66\u751f\u89c6\u89c9\u827a\u672f\u8bbe\u8ba1\u5927\u8d5b\u5956\u9879','\u897f\u5b89\u5de5\u4e1a\u5927\u5b66\u5f55\u53d6\u901a\u77e5\u4e66\u8bbe\u8ba1\u5927\u8d5b\u4e00\u7b49\u5956']
 const toolItems = [
   {name:'Photoshop',icon:asset('/tools/photoshop.svg')},{name:'Illustrator',icon:asset('/tools/illustrator.svg')},{name:'KeyShot',icon:asset('/tools/keyshot.png')},
   {name:'Rhino',icon:asset('/tools/rhino.svg')},{name:'SD ComfyUI',icon:asset('/tools/comfyui.svg')},{name:'Premiere Pro',icon:asset('/tools/premiere.svg')},
   {name:'After Effects',icon:asset('/tools/after-effects.svg')},{name:'SolidWorks',icon:asset('/tools/solidworks.png')},{name:'Figma',icon:asset('/tools/figma.svg')}
 ]
-const Arrow = () => <span className="arrow" aria-hidden="true">?</span>
+const Arrow = () => <span className="arrow" aria-hidden="true">\u2192</span>
 function AutoFolioStrip(){
   const trackRef = useRef(null)
   const targetSpeed = useRef(.34)
