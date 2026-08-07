@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import './pingmianScoped.css'
@@ -8,31 +8,26 @@ import { VisualPortfolio } from '../pingmian-site/src/main.jsx'
 const asset = path => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 const projects = [
-  { id:'01', name:'KS EVO', cn:'璧涜溅妯℃嫙鍣ㄦ蹇佃璁?, type:'SIM RACING / HMI', year:'2026', image:asset('/visual/project-ks-evo.png'), pages:[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], color:'#ff5435', note:'灏嗚Е鎺с€佹樉绀轰笌浜烘満宸ュ鎺у埗鍖烘暣鍚堣繘涓撲笟璧涜溅鏂瑰悜鐩橈紝鍦ㄩ珮閫熺姸鎬佷笅淇濇寔淇℃伅涓庢搷浣滅殑缁濆娓呮櫚銆?, tags:['RESEARCH','ERGONOMICS','CMF'] },
-  { id:'02', name:'ASAR', cn:'闃叉檿 AR 鐪奸暅', type:'WEARABLE / HEALTH', year:'2025', image:asset('/visual/asar-original.jpg'), pages:[20,21,22,23,24,25,26,27,28,29,30,31,32,33,34], color:'#98a99f', note:'浠ヨ瑙夎ˉ鍋裤€佸墠搴皟鑺備笌鍡呰骞查寤虹珛澶氭劅瀹樺崗鍚屼綋楠岋紝璁╅珮棰戝嚭琛屽洖褰掕垝閫傘€?, tags:['INSIGHT','WEARABLE','TECH'] },
-  { id:'03', name:'VCRE', cn:'鑴婃煴鐭搴峰澶栭楠?, type:'MEDICAL / EXOSKELETON', year:'2025', image:asset('/visual/project-vcre.png'), pages:[35,36,37,38,39,40,41,42], color:'#5b6b78', note:'鍦ㄥ尰鐤楃骇鐭涓庢棩甯稿寲搴峰涔嬮棿瀵绘壘骞宠　锛岀敤妯″潡鍖栨敮鎾戝洖搴旂湡瀹炵殑绌挎埓涓庡悍澶嶅満鏅€?, tags:['MEDICAL','MODULAR','HUMAN FACTOR'] },
-  { id:'04', name:'ALECS', cn:'鏃犱汉鏈堣〃鍕樻帰閲囬泦杞?, type:'MOBILITY / SPACE', year:'2025', image:asset('/visual/project-alecs.webp'), pages:[43,44,45,46,47,48,49,50,51,52], color:'#b9b9b2', note:'闈㈠悜鏈堣〃璧勬簮鎺㈡祴涓庨噰鏍蜂换鍔★紝鐢ㄩ珮鏈哄姩鎮灦銆佹劅鐭ュ崟鍏冨拰鏈烘鑷傛瀯鎴愬畬鏁翠换鍔￠棴鐜€?, tags:['MOBILITY','SYSTEM','SPACE'] }
+  { id:'01', name:'KS EVO', cn:'?????????', type:'SIM RACING / HMI', year:'2026', image:asset('/visual/project-ks-evo.png'), pages:[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], color:'#ff5435', note:'?????????????????????????????????????????', tags:['RESEARCH','ERGONOMICS','CMF'] },
+  { id:'02', name:'ASAR', cn:'?? AR ??', type:'WEARABLE / HEALTH', year:'2025', image:asset('/visual/asar-original.jpg'), pages:[20,21,22,23,24,25,26,27,28,29,30,31,32,33,34], color:'#98a99f', note:'???????????????????????????????????', tags:['INSIGHT','WEARABLE','TECH'] },
+  { id:'03', name:'VCRE', cn:'?????????', type:'MEDICAL / EXOSKELETON', year:'2025', image:asset('/visual/project-vcre.png'), pages:[35,36,37,38,39,40,41,42], color:'#5b6b78', note:'?????????????????????????????????????', tags:['MEDICAL','MODULAR','HUMAN FACTOR'] },
+  { id:'04', name:'ALECS', cn:'?????????', type:'MOBILITY / SPACE', year:'2025', image:asset('/visual/project-alecs.webp'), pages:[43,44,45,46,47,48,49,50,51,52], color:'#b9b9b2', note:'??????????????????????????????????????', tags:['MOBILITY','SYSTEM','SPACE'] }
 ]
-
-const pageSrc = number => asset(`/portfolio/pages/p-${String(number).padStart(2,'0')}.jpg`)
+const pageSrc = number => asset('/portfolio/pages/p-' + String(number).padStart(2,'0') + '.jpg')
 const archivePages = [54,55,56,57,58,59,60]
-const archiveLabels = ['褰曞彇閫氱煡涔﹁璁?,'鍝佺墝鏍囧織璁捐','骞垮憡瑙嗚璁捐','鏈烘鑷傞€犲瀷璁捐','浜у搧娓叉煋缁冧範','姒傚康杞﹁璁?,'鎵嬬粯缁冧範']
+const archiveLabels = ['???????','??????','??????','???????','??????','?????','????']
 const stripPages = Array.from({length:61},(_,index)=>index+1)
 const indexProjects = [
-  ...projects.map((project,index)=>({...project,indexImage:['/visual/index-ks.png','/visual/index-asar.png','/visual/index-vcre.png','/visual/index-alecs.png'].map(asset)[index],target:`#case-${project.id}`})),
-  {id:'05',name:'GRAPHIC & ARCHIVE',cn:'骞抽潰璁捐 & 浣滃搧鍚堣緫',type:'VISUAL / ARCHIVE',indexImage:asset('/visual/index-archive.png'),target:'#archive'}
+  ...projects.map((project,index)=>({...project,indexImage:['/visual/index-ks.png','/visual/index-asar.png','/visual/index-vcre.png','/visual/index-alecs.png'].map(asset)[index],target:'#case-' + project.id})),
+  {id:'05',name:'GRAPHIC & ARCHIVE',cn:'?????????',type:'VISUAL / ARCHIVE',indexImage:asset('/visual/index-archive.png'),target:'#archive'}
 ]
-const awardItems = [
-  '鍏ュ洿 2026 寰峰浗 iF 璁捐濂?,'缇庡浗 MUSE 璁捐濂栭摱濂?脳2','缇庡浗濂借璁￠摐濂?,'鏃烘椇鏃舵姤閲戠妸濂?路 MSI 寰槦绉戞妧鍒涗綔澶ц禌浼樼濂?,'鍏ュ洿 QQ 闊充箰杞﹁浇闊充箰鎺т欢澶ц禌','绗?9灞婁腑鍥藉ソ鍒涙剰鏆ㄥ叏鍥芥暟瀛楄壓鏈璁″ぇ璧涳細鐪佷竴绛夊 脳1 / 鐪佷簩绛夊 脳2','绗?3灞婃湭鏉ヨ璁″笀鏆ㄥ叏鍥介珮鏍℃暟瀛楄壓鏈璁″ぇ璧涳細鐪佷簩绛夊 脳1 / 涓夌瓑濂?脳3','绗竷灞婂叏鍥藉ぇ瀛︾敓宸ヤ笟璁捐澶ц禌鐪佷笁绛夊','绗叓灞婂叏鍥藉ぇ瀛︾敓宸ヤ笟璁捐澶ц禌锛氱渷浜岀瓑濂?脳2 / 鐪佷笁绛夊 脳3','绗叓灞婁笂娴峰箍鍗?CMBA 绁炵瑪濂栭摐濂?,'绗崄灞婁袱宀告柊閿愯璁＄珵璧浡峰崕鐏垮鐪佷竴绛夊','鍗庡濂栨枃鍖栬壓鏈璁″ぇ璧涳細閲戝 脳1 / 閾跺 脳3 / 閾滃 脳2','绗叚灞?SGADC 鏂板姞鍧￠噾娌欒壓鏈璁″ぇ璧涢摐濂?脳2','澶у鐢熻瑙夎壓鏈璁″ぇ璧涳細鍥戒簩绛夊 脳1 / 鐪佷簩绛夊 脳2','瑗垮畨宸ヤ笟澶у褰曞彇閫氱煡涔﹁璁″ぇ璧涗竴绛夊'
-]
+const awardItems = ['?? 2026 ?? iF ???','?? MUSE ????? ?2','?? Muse ????','MSI ???????????','?? QQ ??????????','?????????????','???????????','???????????????','???? CMBA ???','??????????','?????????????','SGADC ???????????','?????????????','??????????????????']
 const toolItems = [
   {name:'Photoshop',icon:asset('/tools/photoshop.svg')},{name:'Illustrator',icon:asset('/tools/illustrator.svg')},{name:'KeyShot',icon:asset('/tools/keyshot.png')},
   {name:'Rhino',icon:asset('/tools/rhino.svg')},{name:'SD ComfyUI',icon:asset('/tools/comfyui.svg')},{name:'Premiere Pro',icon:asset('/tools/premiere.svg')},
   {name:'After Effects',icon:asset('/tools/after-effects.svg')},{name:'SolidWorks',icon:asset('/tools/solidworks.png')},{name:'Figma',icon:asset('/tools/figma.svg')}
 ]
-
-const Arrow = () => <span className="arrow" aria-hidden="true">鈫?/span>
-
+const Arrow = () => <span className="arrow" aria-hidden="true">?</span>
 function AutoFolioStrip(){
   const trackRef = useRef(null)
   const targetSpeed = useRef(.34)
@@ -72,15 +67,15 @@ function AutoFolioStrip(){
     return ()=>cancelAnimationFrame(frame)
   },[])
 
-  return <section className="folioStrip" aria-label="浣滃搧闆嗘í鍚戞祻瑙?>
+  return <section className="folioStrip" aria-label="作品集横向浏览">
     <div className="folioStripHead shell" data-reveal>
-      <div><span>03.5 / PORTFOLIO FILMSTRIP</span><b>AUTO SCROLL 路 HOVER TO SLOW</b></div>
+      <div><span>03.5 / PORTFOLIO FILMSTRIP</span><b>AUTO SCROLL · HOVER TO SLOW</b></div>
       <output>01 / 61</output>
     </div>
     <div className="folioViewport" data-reveal onPointerEnter={()=>{targetSpeed.current=.075}} onPointerLeave={()=>{targetSpeed.current=window.matchMedia('(max-width: 720px)').matches?.14:.34}}>
       <div className="folioTrack" ref={trackRef}>
         {[...visiblePages,...visiblePages].map((page,index)=><figure key={`${page}-${index}`} aria-hidden={index>=visiblePages.length}>
-          <img src={pageSrc(page)} loading={index<6?'eager':'lazy'} decoding="async" alt={index<visiblePages.length?`浣滃搧闆嗙 ${page} 椤礰:''}/><figcaption>{String(page).padStart(2,'0')}</figcaption>
+          <img src={pageSrc(page)} loading={index<6?'eager':'lazy'} decoding="async" alt={index<visiblePages.length?`作品集第 ${page} 页`:''}/><figcaption>{String(page).padStart(2,'0')}</figcaption>
         </figure>)}
       </div>
     </div>
@@ -89,11 +84,11 @@ function AutoFolioStrip(){
 
 
 const visualStoryItems = [
-  { index:'01', title:'CITY OF SUNSET', cn:'钀芥棩涔嬪煄', type:'HMI / VISUAL SKIN', image:'/assets/1753710162169-5412196677.webp', detail:'娌夋蹈寮忚浇杞﹂煶涔愮晫闈笌钀芥棩瑙嗚鍙欎簨' },
-  { index:'02', title:'MSI BRAND CAMPAIGN', cn:'寰槦鍝佺墝瑙嗚', type:'CAMPAIGN / KEY VISUAL', image:'/assets/C3BAA1AC62D649FC89D7B3C67DFC8529-6-2.webp', detail:'楂樻€ц兘璁惧鐨勯緳榄傚搧鐗岃瑙夋彁妗? },
-  { index:'03', title:'PAPER NARRATIVE', cn:'褰曞彇閫氱煡涔?, type:'EDITORIAL / PACKAGING', image:'/assets/20260714-113007.webp', detail:'鐢ㄧ焊寮犮€佺粨鏋勪笌寮€鍚姩浣滅紪鎺掍竴娈靛叆瀛﹀彊浜? },
-  { index:'04', title:'GARMENT SHADOW', cn:'琛ｅ奖', type:'CONCEPT / LIGHTING', image:'/assets/20260714-113121.webp', detail:'浠庤。鐗╀笌鍏夊奖涔嬮棿鎻愬彇姘涘洿鐏蹇? },
-  { index:'05', title:'DANYANG IDENTITY', cn:'涓归槼鏂囨梾', type:'BRAND IDENTITY / LOGO', image:'/assets/20260714-113102.webp', detail:'浠庡湴鍩熷北姘翠笌鍘嗗彶涓彁鍙栧煄甯傚嵃绔? }
+  { index:'01', title:'CITY OF SUNSET', cn:'落日之城', type:'HMI / VISUAL SKIN', image:'/assets/1753710162169-5412196677.webp', detail:'沉浸式载车音乐界面与落日视觉叙事' },
+  { index:'02', title:'MSI BRAND CAMPAIGN', cn:'微星品牌视觉', type:'CAMPAIGN / KEY VISUAL', image:'/assets/C3BAA1AC62D649FC89D7B3C67DFC8529-6-2.webp', detail:'高性能设备的龙魂品牌视觉提案' },
+  { index:'03', title:'PAPER NARRATIVE', cn:'录取通知书', type:'EDITORIAL / PACKAGING', image:'/assets/20260714-113007.webp', detail:'用纸张、结构与开启动作编排一段入学叙事' },
+  { index:'04', title:'GARMENT SHADOW', cn:'衣影', type:'CONCEPT / LIGHTING', image:'/assets/20260714-113121.webp', detail:'从衣物与光影之间提取氛围灯概念' },
+  { index:'05', title:'DANYANG IDENTITY', cn:'丹阳文旅', type:'BRAND IDENTITY / LOGO', image:'/assets/20260714-113102.webp', detail:'从地域山水与历史中提取城市印章' }
 ]
 
 function VisualStoriesBridge(){
@@ -118,11 +113,11 @@ function VisualStoriesBridge(){
 function SiteRail(){
   const [active,setActive] = useState('top')
   const links = [
-    ['00','#top','棣栭〉'],
-    ['01','#about','鍏充簬'],
-    ['02','#work','宸ヤ笟璁捐'],
-    ['03','#archive','瑙嗚浣滃搧'],
-    ['04','#contact','鑱旂郴']
+    ['00','#top','首页'],
+    ['01','#about','关于'],
+    ['02','#work','工业设计'],
+    ['03','#archive','视觉作品'],
+    ['04','#contact','联系']
   ]
   useEffect(()=>{
     const observer = new IntersectionObserver(entries=>{
@@ -132,7 +127,7 @@ function SiteRail(){
     links.forEach(([,id])=>{const el=document.querySelector(id);if(el) observer.observe(el)})
     return ()=>observer.disconnect()
   },[])
-  return <nav className={active==="work"?"siteRail isWork":"siteRail"} aria-label="缃戠珯鐩綍">
+  return <nav className={active==="work"?"siteRail isWork":"siteRail"} aria-label="网站目录">
     {links.map(([index,id,label])=><button key={id} className={active===id.slice(1)?'active':''} onClick={()=>document.querySelector(id)?.scrollIntoView({behavior:'smooth'})}>
       <span>{index}</span><i></i><b>{label}</b>
     </button>)}
@@ -198,19 +193,19 @@ function App(){
       <div className="cinemaBootText">
         <span>GJL DESIGN ARCHIVE / SYSTEM START</span>
         <b>DESIGNING<br/>THE UNSEEN.</b>
-        <span>FORM 路 FUNCTION 路 EXPERIENCE</span>
+        <span>FORM · FUNCTION · EXPERIENCE</span>
       </div>
     </div>
-    <button className={showTop?'floatingTop isVisible':'floatingTop'} onClick={()=>go('#top')} aria-label="杩斿洖椤堕儴"><span>鈫?/span><small>TOP</small></button>
+    <button className={showTop?'floatingTop isVisible':'floatingTop'} onClick={()=>go('#top')} aria-label="返回顶部"><span>↑</span><small>TOP</small></button>
     <SiteRail />
     <header className="topbar shell">
-      <button className="logo" onClick={()=>setContactCard(true)} aria-label="鏌ョ湅璋峰槈涔愮殑鑱旂郴鏂瑰紡"><b>GJL</b><span>璋峰槈涔?br/>INDUSTRIAL DESIGNER</span></button>
+      <button className="logo" onClick={()=>setContactCard(true)} aria-label="查看谷嘉乐的联系方式"><b>GJL</b><span>谷嘉乐<br/>INDUSTRIAL DESIGNER</span></button>
       <nav className={menu?'nav open':'nav'}>
-        <button onClick={()=>go('#work')}><span>WORK</span><small>浣滃搧</small></button>
-        <button onClick={()=>go('#about')}><span>ABOUT</span><small>鍏充簬</small></button>
-        <button onClick={()=>go('#contact')}><span>CONTACT</span><small>鑱旂郴</small></button>
+        <button onClick={()=>go('#work')}><span>WORK</span><small>作品</small></button>
+        <button onClick={()=>go('#about')}><span>ABOUT</span><small>关于</small></button>
+        <button onClick={()=>go('#contact')}><span>CONTACT</span><small>联系</small></button>
       </nav>
-      <div className="navSide"><span><i/> AVAILABLE 路 2026</span><a className="visualSwitch" href="https://www.gujiale.cn" target="_blank" rel="noreferrer">鍒囨崲瑙嗚璁捐浣滃搧闆?/a><button className="menu" onClick={()=>setMenu(!menu)}>{menu?'CLOSE':'MENU'}</button></div>
+      <div className="navSide"><span><i/> AVAILABLE · 2026</span><a className="visualSwitch" href="https://www.gujiale.cn" target="_blank" rel="noreferrer">切换视觉设计作品集</a><button className="menu" onClick={()=>setMenu(!menu)}>{menu?'CLOSE':'MENU'}</button></div>
     </header>
 
     <section className="hero" id="top">
@@ -220,65 +215,65 @@ function App(){
         <img src={asset('/visual/cover-original.jpg')} alt=""/>
         <div className="lightSweep"/>
       </div>
-      <div className="heroMeta shell"><span>PORTFOLIO / 2026<small>璋峰槈涔愮殑涓汉璁捐灏忕珯</small></span><span>PRODUCT 路 FORM 路 EXPERIENCE</span></div>
+      <div className="heroMeta shell"><span>PORTFOLIO / 2026<small>谷嘉乐的个人设计小站</small></span><span>PRODUCT · FORM · EXPERIENCE</span></div>
       <div className="heroTitle shell">
-        <p>浜у搧璁捐涓嶆槸鎻忔懝鏈潵锛?br/>鑰屾槸璁╂湭鐭ユ嫢鏈夊舰鐘躲€?/p>
+        <p>产品设计不是描摹未来，<br/>而是让未知拥有形状。</p>
         <h1><span>DESIGNING</span><strong>THE UNSEEN<em>.</em></strong></h1>
       </div>
-      <div className="heroFoot shell"><span>GU JIALE / 璋峰槈涔?/span><button onClick={()=>go('#about')}>SCROLL TO EXPLORE <b>鈫?/b></button><span>XI'AN 路 CN</span></div>
+      <div className="heroFoot shell"><span>GU JIALE / 谷嘉乐</span><button onClick={()=>go('#about')}>SCROLL TO EXPLORE <b>↓</b></button><span>XI'AN · CN</span></div>
     </section>
 
     <section className="about shell" id="about">
       <div className="sectionCode" data-reveal><span>02</span> / PROFILE</div>
       <div className="aboutGrid">
         <div className="aboutImage" data-reveal>
-          <img src={asset('/portfolio/portrait-20260703.png')} alt="璋峰槈涔愪釜浜鸿倴鍍?/>
+          <img src={asset('/portfolio/portrait-20260703.png')} alt="谷嘉乐个人肖像"/>
           <div className="portraitType" aria-hidden="true">
             <span className="portraitMark">GJL / ID DESIGNER</span>
-            <span className="portraitPlace">XI'AN 路 CN</span>
+            <span className="portraitPlace">XI'AN · CN</span>
             <span className="portraitYear">2026</span>
           </div>
         </div>
         <div className="aboutBody" data-reveal>
-          <p className="micro">PRODUCT ID DESIGNER 路 XI'AN</p>
-          <h2>璁╀骇鍝佷笉浠?br/>琚湅瑙侊紝鏇磋<strong>鎰熺煡銆?/strong></h2>
-          <p className="aboutIntro">瑗垮畨宸ヤ笟澶у浜у搧璁捐涓撲笟銆傚叧娉ㄦ櫤鑳界‖浠躲€佹湭鏉ュ嚭琛屼笌鍖荤枟鍋ュ悍锛屾搮闀夸粠鍦烘櫙娲炲療銆侀€犲瀷鎺ㄥ鍒板缓妯℃覆鏌撶殑瀹屾暣璁捐琛ㄨ揪銆?/p>
+          <p className="micro">PRODUCT ID DESIGNER · XI'AN</p>
+          <h2>让产品不仅<br/>被看见，更被<strong>感知。</strong></h2>
+          <p className="aboutIntro">西安工业大学产品设计专业。关注智能硬件、未来出行与医疗健康，擅长从场景洞察、造型推导到建模渲染的完整设计表达。</p>
           <div className="career">
-            <div className="careerItem" tabIndex="0"><time>2026.06鈥旇嚦浠?/time><p>浼犻煶鎺ц偂<span>宸ヤ笟璁捐瀹炰範</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 椤圭洰缁忓巻</small><ul><li>绯诲垪鎵嬫満琛嶇敓閰嶄欢璁捐</li></ul></aside></div>
-            <div className="careerItem" tabIndex="0"><time>2026.01鈥?4</time><p>鍖椾含娲涘彲鍙鎶€鏈夐檺鍏徃<span>ID 璁捐 / 寤烘ā娓叉煋</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 椤圭洰缁忓巻</small><ul><li>灏氬畯浠〃鏅鸿兘鍙屾ā姘磋〃鍒涙柊璁捐</li><li>绫冲ゥ鍏呯數鏈哄櫒浜哄瑙傝璁?/li><li>鑱斿疇 C09 / C10 鏅鸿兘鐚爞鐩嗗瑙傚強鏈烘瀯鎺ㄥ</li><li>娌愬矚棣欒柊浜у搧璁捐</li><li>SAZA 鐢峰＋棣欐皼鍏ㄦ璁捐涓庤惤鍦?/li><li>纰ф按婧愭櫤鑳芥ā鍧楀寲姘村巶璁捐</li></ul></aside></div>
-            <div className="careerItem" tabIndex="0"><time>2024鈥?025</time><p>瑗垮畨宸ヤ笟澶у鍏靛櫒瑁呭宸ヤ笟璁捐涓績<span>椤圭洰璁捐鎴愬憳</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 椤圭洰缁忓巻</small><ul><li>鏂扮枂鏂囧垱 LOGO 鍏ㄦ璁捐</li><li>XX 鍨嬭繙绋嬪绠＄伀绠偖璁捐</li><li>XX 鍨嬫寚鎸ヨ溅璁捐</li><li>姘㈡哀鐒扮儳铓€骞冲彴鍚堜綔椤圭洰</li><li>瑗垮畨宸ヤ笟澶у褰曞彇閫氱煡涔﹁璁′笌钀藉湴</li></ul></aside></div>
+            <div className="careerItem" tabIndex="0"><time>2026.06—至今</time><p>传音控股<span>工业设计实习</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>系列手机衍生配件设计</li></ul></aside></div>
+            <div className="careerItem" tabIndex="0"><time>2026.01—04</time><p>北京洛可可科技有限公司<span>ID 设计 / 建模渲染</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>尚宏仪表智能双模水表创新设计</li><li>米奥充电机器人外观设计</li><li>联宠 C09 / C10 智能猫砂盆外观及机构推导</li><li>沐岚香薰产品设计</li><li>SAZA 男士香氛全案设计与落地</li><li>碧水源智能模块化水厂设计</li></ul></aside></div>
+            <div className="careerItem" tabIndex="0"><time>2024—2025</time><p>西安工业大学兵器装备工业设计中心<span>项目设计成员</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>新疆文创 LOGO 全案设计</li><li>XX 型远程多管火箭炮设计</li><li>XX 型指挥车设计</li><li>氢氧焰烧蚀平台合作项目</li><li>西安工业大学录取通知书设计与落地</li></ul></aside></div>
           </div>
         </div>
       </div>
       <div className="numbers" data-reveal>
-        <div className={`statCard statAwards${openStat==='awards'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='awards'} onClick={()=>setOpenStat(openStat==='awards'?null:'awards')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='awards'?null:'awards')}}}><b>20<sup>+</sup></b><span className="statLabel"><strong>璁捐濂栭」</strong><small>DESIGN AWARDS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover awardsPopover"><header><small>AWARD EXPERIENCE</small><strong>鎵€鑾峰椤?/strong></header><ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol></aside>
+        <div className={`statCard statAwards${openStat==='awards'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='awards'} onClick={()=>setOpenStat(openStat==='awards'?null:'awards')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='awards'?null:'awards')}}}><b>20<sup>+</sup></b><span className="statLabel"><strong>设计奖项</strong><small>DESIGN AWARDS</small></span><i>CLICK TO EXPLORE</i>
+          <aside className="statPopover awardsPopover"><header><small>AWARD EXPERIENCE</small><strong>所获奖项</strong></header><ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol></aside>
         </div>
-        <div className={`statCard statProjects${openStat==='projects'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='projects'} onClick={event=>{if(!event.target.closest('button'))setOpenStat(openStat==='projects'?null:'projects')}} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='projects'?null:'projects')}}}><b>04</b><span className="statLabel"><strong>鏍稿績椤圭洰</strong><small>CORE PROJECTS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover projectsPopover"><header><small>SELECTED PROJECTS</small><strong>鏍稿績椤圭洰 路 04</strong></header><div className="statProjectList">{projects.map(project=><button key={project.id} onClick={()=>go(`#case-${project.id}`)}><em>{project.id}</em><span><b>{project.name}</b><small>{project.cn}</small></span><Arrow/></button>)}</div></aside>
+        <div className={`statCard statProjects${openStat==='projects'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='projects'} onClick={event=>{if(!event.target.closest('button'))setOpenStat(openStat==='projects'?null:'projects')}} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='projects'?null:'projects')}}}><b>04</b><span className="statLabel"><strong>核心项目</strong><small>CORE PROJECTS</small></span><i>CLICK TO EXPLORE</i>
+          <aside className="statPopover projectsPopover"><header><small>SELECTED PROJECTS</small><strong>核心项目 · 04</strong></header><div className="statProjectList">{projects.map(project=><button key={project.id} onClick={()=>go(`#case-${project.id}`)}><em>{project.id}</em><span><b>{project.name}</b><small>{project.cn}</small></span><Arrow/></button>)}</div></aside>
         </div>
-        <div className={`statCard statTools${openStat==='tools'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='tools'} onClick={()=>setOpenStat(openStat==='tools'?null:'tools')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='tools'?null:'tools')}}}><b>09<sup>+</sup></b><span className="statLabel"><strong>璁捐宸ュ叿</strong><small>DESIGN TOOLS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover toolsPopover"><header><small>DESIGN WORKFLOW</small><strong>宸ュ叿鐭╅樀 路 09</strong></header><div className="toolGrid">{toolItems.map(tool=><div key={tool.name}><span className="toolIcon"><img src={tool.icon} alt={`${tool.name} 杞欢鍥炬爣`}/></span><b>{tool.name}</b></div>)}</div></aside>
+        <div className={`statCard statTools${openStat==='tools'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='tools'} onClick={()=>setOpenStat(openStat==='tools'?null:'tools')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='tools'?null:'tools')}}}><b>09<sup>+</sup></b><span className="statLabel"><strong>设计工具</strong><small>DESIGN TOOLS</small></span><i>CLICK TO EXPLORE</i>
+          <aside className="statPopover toolsPopover"><header><small>DESIGN WORKFLOW</small><strong>工具矩阵 · 09</strong></header><div className="toolGrid">{toolItems.map(tool=><div key={tool.name}><span className="toolIcon"><img src={tool.icon} alt={`${tool.name} 软件图标`}/></span><b>{tool.name}</b></div>)}</div></aside>
         </div>
       </div>
     {openStat==='awards'&&<div className="statModalLayer" role="presentation" onClick={()=>setOpenStat(null)}>
       <div className="statModal" role="dialog" aria-modal="true" aria-labelledby="awards-modal-title" onClick={event=>event.stopPropagation()}>
-        <button className="statModalClose" onClick={()=>setOpenStat(null)} aria-label="鍏抽棴濂栭」鍒楄〃">?</button>
-        <header><small>AWARD EXPERIENCE</small><strong id="awards-modal-title">鎵€鑾峰椤?/strong></header>
+        <button className="statModalClose" onClick={()=>setOpenStat(null)} aria-label="关闭奖项列表">?</button>
+        <header><small>AWARD EXPERIENCE</small><strong id="awards-modal-title">所获奖项</strong></header>
         <ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol>
       </div>
     </div>}
     </section>
 
     <section className="portfolioIndex shell" id="index">
-      <div className="indexTop" data-reveal><div className="sectionCode"><span>03</span> / CONTENTS</div><p>PORTFOLIO INDEX<br/>浣滃搧鐩綍</p></div>
+      <div className="indexTop" data-reveal><div className="sectionCode"><span>03</span> / CONTENTS</div><p>PORTFOLIO INDEX<br/>作品目录</p></div>
       <div className="indexVisual" data-reveal>
         <div className="indexGallery">
           {indexProjects.map(project=><button className="indexCard" key={project.id} onClick={()=>go(project.target)} onPointerMove={event=>{
             const rect=event.currentTarget.getBoundingClientRect()
             event.currentTarget.style.setProperty('--index-x',`${event.clientX-rect.left}px`)
             event.currentTarget.style.setProperty('--index-y',`${event.clientY-rect.top}px`)
-          }} aria-label={`鍓嶅線 ${project.name} 椤圭洰`}>
+          }} aria-label={`前往 ${project.name} 项目`}>
             <span className="indexNumber">{project.id}</span>
             <img src={project.indexImage} alt=""/>
             <span className="indexShade" aria-hidden="true"/>
@@ -292,13 +287,13 @@ function App(){
 
     <AutoFolioStrip/>
 
-    <div className="ticker tickerReverse" aria-hidden="true"><div>RESEARCH 路 IDEATION 路 FORM 路 PROTOTYPE 路 CMF 路 EXPERIENCE 路 RESEARCH 路 IDEATION 路 FORM 路 PROTOTYPE 路 CMF 路 EXPERIENCE 路</div></div>
+    <div className="ticker tickerReverse" aria-hidden="true"><div>RESEARCH · IDEATION · FORM · PROTOTYPE · CMF · EXPERIENCE · RESEARCH · IDEATION · FORM · PROTOTYPE · CMF · EXPERIENCE ·</div></div>
 
     <section className="work" id="work">
       <div className="workHead shell" data-reveal>
         <div className="sectionCode"><span>04</span> / SELECTED WORK</div>
         <h2>SELECTED<br/><i>OBJECTS</i><sup>04</sup></h2>
-        <p>2024鈥?026<br/>PRODUCT / ID / CONCEPT</p>
+        <p>2024—2026<br/>PRODUCT / ID / CONCEPT</p>
       </div>
       <div className="projects">
         {projects.map(project=><article className={`project project--${project.id}`} id={`case-${project.id}`} key={project.id} style={{'--accent':project.color}} data-reveal>
@@ -306,7 +301,7 @@ function App(){
             const rect = event.currentTarget.getBoundingClientRect()
             event.currentTarget.style.setProperty('--card-x',`${event.clientX-rect.left}px`)
             event.currentTarget.style.setProperty('--card-y',`${event.clientY-rect.top}px`)
-          }} onClick={()=>setActive(project)} aria-label={`鏌ョ湅 ${project.name} 椤圭洰`}>
+          }} onClick={()=>setActive(project)} aria-label={`查看 ${project.name} 项目`}>
             <img src={project.image} alt={project.cn}/><span className="projectTint"/>
             <span className="projectNo">{project.id}</span><span className="projectCursor" aria-hidden="true">VIEW</span><span className="projectAction">VIEW PROJECT <Arrow/></span>
           </button>
@@ -321,7 +316,7 @@ function App(){
 
     <VisualStoriesBridge />
 
-    <div className="ticker" aria-hidden="true"><div>INDUSTRIAL DESIGN 路 HUMAN EXPERIENCE 路 FUTURE OBJECTS 路 INDUSTRIAL DESIGN 路 HUMAN EXPERIENCE 路 FUTURE OBJECTS 路</div></div>
+    <div className="ticker" aria-hidden="true"><div>INDUSTRIAL DESIGN · HUMAN EXPERIENCE · FUTURE OBJECTS · INDUSTRIAL DESIGN · HUMAN EXPERIENCE · FUTURE OBJECTS ·</div></div>
 
     <section className="contact" id="contact">
       <div className="contactLight"/>
@@ -330,13 +325,13 @@ function App(){
         <p>HAVE AN IDEA?</p>
         <h2>LET'S MAKE IT<br/><i>VISIBLE.</i></h2>
         <a href="mailto:2735901862@qq.com">START A CONVERSATION <Arrow/></a>
-        <div className="contactMeta"><span>2735901862@qq.com</span><span>WECHAT / Gjl2735901862</span><span>155 9178 6656</span><button onClick={()=>go('#top')}>BACK TO TOP 鈫?/button></div>
+        <div className="contactMeta"><span>2735901862@qq.com</span><span>WECHAT / Gjl2735901862</span><span>155 9178 6656</span><button onClick={()=>go('#top')}>BACK TO TOP ↑</button></div>
       </div>
     </section>
 
     {contactCard&&<div className="contactCardLayer" role="presentation" onClick={event=>{if(event.target===event.currentTarget)setContactCard(false)}}>
       <section className="contactCard" role="dialog" aria-modal="true" aria-labelledby="contact-card-title">
-        <button className="contactCardClose" onClick={()=>setContactCard(false)} aria-label="鍏抽棴鑱旂郴鏂瑰紡">脳</button>
+        <button className="contactCardClose" onClick={()=>setContactCard(false)} aria-label="关闭联系方式">×</button>
         <div className="contactCardCode">GJL / CONTACT</div>
         <h2 id="contact-card-title">LET'S<br/><i>CONNECT.</i></h2>
         <div className="contactCardRows">
@@ -347,15 +342,14 @@ function App(){
       </section>
     </div>}
 
-    {active&&<div className="modal" role="dialog" aria-modal="true" aria-label={`${active.name} 椤圭洰璇︽儏`}>
-      <button className="modalClose" onClick={()=>setActive(null)}>CLOSE <span>脳</span></button>
-      <div className="modalHead shell"><div><span>{active.id} / CASE STUDY</span><h2>{active.name}</h2></div><p>{active.cn}<br/><small>{active.type} 路 {active.year}</small></p></div>
+    {active&&<div className="modal" role="dialog" aria-modal="true" aria-label={`${active.name} 项目详情`}>
+      <button className="modalClose" onClick={()=>setActive(null)}>CLOSE <span>×</span></button>
+      <div className="modalHead shell"><div><span>{active.id} / CASE STUDY</span><h2>{active.name}</h2></div><p>{active.cn}<br/><small>{active.type} · {active.year}</small></p></div>
       <div className="modalInfo shell"><p>{active.note}</p><div>{active.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div>
-      <div className="casePages shell">{active.pages.map((page,index)=><figure className={index===0||index%5===0?'caseWide':''} key={page}><img src={pageSrc(page)} alt={`${active.cn} - 浣滃搧闆嗙 ${page} 椤礰}/><figcaption>{String(page).padStart(2,'0')} / {String(active.pages.at(-1)).padStart(2,'0')}</figcaption></figure>)}</div>
+      <div className="casePages shell">{active.pages.map((page,index)=><figure className={index===0||index%5===0?'caseWide':''} key={page}><img src={pageSrc(page)} alt={`${active.cn} - 作品集第 ${page} 页`}/><figcaption>{String(page).padStart(2,'0')} / {String(active.pages.at(-1)).padStart(2,'0')}</figcaption></figure>)}</div>
     </div>}
   </main>
 }
 
 createRoot(document.getElementById('root')).render(<App/>)
-
 
