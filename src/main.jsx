@@ -341,7 +341,7 @@ function App(){
     </div>}
 
     {active&&<div className="modal" role="dialog" aria-modal="true" aria-label={`${active.name} 椤圭洰璇︽儏`}>
-      <button className="modalClose" onClick={()=>setActive(null)}>CLOSE <span>脳</span></button>
+      <button className="modalClose" onClick={()=>setActive(null)}>点击此处返回主页</button>
       <div className="modalHead shell"><div><span>{active.id} / CASE STUDY</span><h2>{active.name}</h2></div><p>{active.cn}<br/><small>{active.type} · {active.year}</small></p></div>
       <div className="modalInfo shell"><p>{active.note}</p><div>{active.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div>
       <div className="casePages shell">{active.pages.map((page)=><figure className="casePage" key={page}><img src={pageSrc(page)} alt={`Case page ${page}`}/><figcaption>{String(page).padStart(2,'0')} / {String(active.pages.at(-1)).padStart(2,'0')}</figcaption></figure>)}</div>
