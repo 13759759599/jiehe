@@ -27,7 +27,6 @@ const toolItems = [
   {name:'Rhino',icon:asset('/tools/rhino.svg')},{name:'SD ComfyUI',icon:asset('/tools/comfyui.svg')},{name:'Premiere Pro',icon:asset('/tools/premiere.svg')},
   {name:'After Effects',icon:asset('/tools/after-effects.svg')},{name:'SolidWorks',icon:asset('/tools/solidworks.png')},{name:'Figma',icon:asset('/tools/figma.svg')}
 ]
-const Arrow = () => <span className="arrow" aria-hidden="true">\u2192</span>
 function AutoFolioStrip(){
   const trackRef = useRef(null)
   const targetSpeed = useRef(.34)
@@ -67,7 +66,7 @@ function AutoFolioStrip(){
     return ()=>cancelAnimationFrame(frame)
   },[])
 
-  return <section className="folioStrip" aria-label="作品集横向浏览">
+  return <section className="folioStrip" aria-label="Portfolio filmstrip">
     <div className="folioStripHead shell" data-reveal>
       <div><span>03.5 / PORTFOLIO FILMSTRIP</span><b>AUTO SCROLL · HOVER TO SLOW</b></div>
       <output>01 / 61</output>
@@ -75,7 +74,7 @@ function AutoFolioStrip(){
     <div className="folioViewport" data-reveal onPointerEnter={()=>{targetSpeed.current=.075}} onPointerLeave={()=>{targetSpeed.current=window.matchMedia('(max-width: 720px)').matches?.14:.34}}>
       <div className="folioTrack" ref={trackRef}>
         {[...visiblePages,...visiblePages].map((page,index)=><figure key={`${page}-${index}`} aria-hidden={index>=visiblePages.length}>
-          <img src={pageSrc(page)} loading={index<6?'eager':'lazy'} decoding="async" alt={index<visiblePages.length?`作品集第 ${page} 页`:''}/><figcaption>{String(page).padStart(2,'0')}</figcaption>
+          <img src={pageSrc(page)} loading={index<6?'eager':'lazy'} decoding="async" alt={`Portfolio page ${page}`}/><figcaption>{String(page).padStart(2,'0')}</figcaption>
         </figure>)}
       </div>
     </div>
@@ -84,11 +83,11 @@ function AutoFolioStrip(){
 
 
 const visualStoryItems = [
-  { index:'01', title:'CITY OF SUNSET', cn:'落日之城', type:'HMI / VISUAL SKIN', image:'/assets/1753710162169-5412196677.webp', detail:'沉浸式载车音乐界面与落日视觉叙事' },
-  { index:'02', title:'MSI BRAND CAMPAIGN', cn:'微星品牌视觉', type:'CAMPAIGN / KEY VISUAL', image:'/assets/C3BAA1AC62D649FC89D7B3C67DFC8529-6-2.webp', detail:'高性能设备的龙魂品牌视觉提案' },
-  { index:'03', title:'PAPER NARRATIVE', cn:'录取通知书', type:'EDITORIAL / PACKAGING', image:'/assets/20260714-113007.webp', detail:'用纸张、结构与开启动作编排一段入学叙事' },
-  { index:'04', title:'GARMENT SHADOW', cn:'衣影', type:'CONCEPT / LIGHTING', image:'/assets/20260714-113121.webp', detail:'从衣物与光影之间提取氛围灯概念' },
-  { index:'05', title:'DANYANG IDENTITY', cn:'丹阳文旅', type:'BRAND IDENTITY / LOGO', image:'/assets/20260714-113102.webp', detail:'从地域山水与历史中提取城市印章' }
+  { index:'01', title:'CITY OF SUNSET', cn:'\u843d\u65e5\u4e4b\u57ce', type:'HMI / VISUAL SKIN', image:asset('/assets/1753710162169-5412196677.webp'), detail:'\u6c89\u6d78\u5f0f\u8f7d\u8f66\u97f3\u4e50\u754c\u9762\u4e0e\u843d\u65e5\u89c6\u89c9\u53d9\u4e8b' },
+  { index:'02', title:'MSI BRAND CAMPAIGN', cn:'MSI Brand Campaign', type:'CAMPAIGN / KEY VISUAL', image:asset('/assets/C3BAA1AC62D649FC89D7B3C67DFC8529-6-2.webp'), detail:'MSI visual campaign' },
+  { index:'03', title:'PAPER NARRATIVE', cn:'Paper Narrative', type:'EDITORIAL / PACKAGING', image:asset('/assets/20260714-113007.webp'), detail:'Editorial packaging story' },
+  { index:'04', title:'GARMENT SHADOW', cn:'Garment Shadow', type:'CONCEPT / LIGHTING', image:asset('/assets/20260714-113121.webp'), detail:'Concept lighting study' },
+  { index:'05', title:'DANYANG IDENTITY', cn:'Danyang Identity', type:'BRAND IDENTITY / LOGO', image:asset('/assets/20260714-113102.webp'), detail:'Regional identity system' }
 ]
 
 function VisualStoriesBridge(){
@@ -127,7 +126,7 @@ function SiteRail(){
     links.forEach(([,id])=>{const el=document.querySelector(id);if(el) observer.observe(el)})
     return ()=>observer.disconnect()
   },[])
-  return <nav className={active==="work"?"siteRail isWork":"siteRail"} aria-label="网站目录">
+  return <nav className={active==="work"?"siteRail isWork":"siteRail"} aria-label="缃戠珯鐩綍">
     {links.map(([index,id,label])=><button key={id} className={active===id.slice(1)?'active':''} onClick={()=>document.querySelector(id)?.scrollIntoView({behavior:'smooth'})}>
       <span>{index}</span><i></i><b>{label}</b>
     </button>)}
@@ -196,16 +195,15 @@ function App(){
         <span>FORM · FUNCTION · EXPERIENCE</span>
       </div>
     </div>
-    <button className={showTop?'floatingTop isVisible':'floatingTop'} onClick={()=>go('#top')} aria-label="返回顶部"><span>↑</span><small>TOP</small></button>
+    <button className={showTop?'floatingTop isVisible':'floatingTop'} onClick={()=>go('#top')} aria-label="杩斿洖椤堕儴"><span></span><small>TOP</small></button>
     <SiteRail />
     <header className="topbar shell">
-      <button className="logo" onClick={()=>setContactCard(true)} aria-label="查看谷嘉乐的联系方式"><b>GJL</b><span>谷嘉乐<br/>INDUSTRIAL DESIGNER</span></button>
+      <button className="logo" onClick={()=>setContactCard(true)} aria-label="查看谷嘉乐的联系方式"><b>GJL</b><span>GJL<br/>INDUSTRIAL DESIGNER</span></button>
       <nav className={menu?'nav open':'nav'}>
         <button onClick={()=>go('#work')}><span>WORK</span><small>作品</small></button>
-        <button onClick={()=>go('#about')}><span>ABOUT</span><small>关于</small></button>
         <button onClick={()=>go('#contact')}><span>CONTACT</span><small>联系</small></button>
       </nav>
-      <div className="navSide"><span><i/> AVAILABLE · 2026</span><a className="visualSwitch" href="https://www.gujiale.cn" target="_blank" rel="noreferrer">切换视觉设计作品集</a><button className="menu" onClick={()=>setMenu(!menu)}>{menu?'CLOSE':'MENU'}</button></div>
+      <div className="navSide"><span><i/> AVAILABLE / 2026</span><button className="menu" onClick={()=>setMenu(!menu)}>{menu?'CLOSE':'MENU'}</button></div>
     </header>
 
     <section className="hero" id="top">
@@ -215,19 +213,17 @@ function App(){
         <img src={asset('/visual/cover-original.jpg')} alt=""/>
         <div className="lightSweep"/>
       </div>
-      <div className="heroMeta shell"><span>PORTFOLIO / 2026<small>谷嘉乐的个人设计小站</small></span><span>PRODUCT · FORM · EXPERIENCE</span></div>
+      <div className="heroMeta shell"><span>PORTFOLIO / 2026<small>谷嘉乐的个人设计小站</small></span></div>
       <div className="heroTitle shell">
-        <p>产品设计不是描摹未来，<br/>而是让未知拥有形状。</p>
         <h1><span>DESIGNING</span><strong>THE UNSEEN<em>.</em></strong></h1>
       </div>
-      <div className="heroFoot shell"><span>GU JIALE / 谷嘉乐</span><button onClick={()=>go('#about')}>SCROLL TO EXPLORE <b>↓</b></button><span>XI'AN · CN</span></div>
     </section>
 
     <section className="about shell" id="about">
       <div className="sectionCode" data-reveal><span>02</span> / PROFILE</div>
       <div className="aboutGrid">
         <div className="aboutImage" data-reveal>
-          <img src={asset('/portfolio/portrait-20260703.png')} alt="谷嘉乐个人肖像"/>
+          <img src={asset('/portfolio/portrait-20260703.png')} alt="Portrait"/>
           <div className="portraitType" aria-hidden="true">
             <span className="portraitMark">GJL / ID DESIGNER</span>
             <span className="portraitPlace">XI'AN · CN</span>
@@ -239,47 +235,47 @@ function App(){
           <h2>让产品不仅<br/>被看见，更被<strong>感知。</strong></h2>
           <p className="aboutIntro">西安工业大学产品设计专业。关注智能硬件、未来出行与医疗健康，擅长从场景洞察、造型推导到建模渲染的完整设计表达。</p>
           <div className="career">
-            <div className="careerItem" tabIndex="0"><time>2026.06—至今</time><p>传音控股<span>工业设计实习</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>系列手机衍生配件设计</li></ul></aside></div>
+            <div className="careerItem" tabIndex="0"><time>2026.06—至今</time><p>传音控股<span>工业设计实习</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>POVA 系列手机：系列手机衍生配件设计</li><li>参与传音工业设计 AIGC 全流程研究</li></ul></aside></div>
             <div className="careerItem" tabIndex="0"><time>2026.01—04</time><p>北京洛可可科技有限公司<span>ID 设计 / 建模渲染</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>尚宏仪表智能双模水表创新设计</li><li>米奥充电机器人外观设计</li><li>联宠 C09 / C10 智能猫砂盆外观及机构推导</li><li>沐岚香薰产品设计</li><li>SAZA 男士香氛全案设计与落地</li><li>碧水源智能模块化水厂设计</li></ul></aside></div>
-            <div className="careerItem" tabIndex="0"><time>2024—2025</time><p>西安工业大学兵器装备工业设计中心<span>项目设计成员</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>新疆文创 LOGO 全案设计</li><li>XX 型远程多管火箭炮设计</li><li>XX 型指挥车设计</li><li>氢氧焰烧蚀平台合作项目</li><li>西安工业大学录取通知书设计与落地</li></ul></aside></div>
+            <div className="careerItem" tabIndex="0"><time>2024—2025</time><p>西安工业大学兵器装备工业设计中心<span>项目设计成员</span></p><i>+</i><aside className="careerPopover"><small>PROJECT EXPERIENCE / 项目经历</small><ul><li>新疆文创 LOGO 全案设计</li></ul></aside></div>
           </div>
         </div>
       </div>
       <div className="numbers" data-reveal>
         <div className={`statCard statAwards${openStat==='awards'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='awards'} onClick={()=>setOpenStat(openStat==='awards'?null:'awards')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='awards'?null:'awards')}}}><b>20<sup>+</sup></b><span className="statLabel"><strong>设计奖项</strong><small>DESIGN AWARDS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover awardsPopover"><header><small>AWARD EXPERIENCE</small><strong>所获奖项</strong></header><ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol></aside>
+          <aside className="statPopover awardsPopover"><header><small>AWARD EXPERIENCE</small><strong>获奖项</strong></header><ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol></aside>
         </div>
         <div className={`statCard statProjects${openStat==='projects'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='projects'} onClick={event=>{if(!event.target.closest('button'))setOpenStat(openStat==='projects'?null:'projects')}} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='projects'?null:'projects')}}}><b>04</b><span className="statLabel"><strong>核心项目</strong><small>CORE PROJECTS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover projectsPopover"><header><small>SELECTED PROJECTS</small><strong>核心项目 · 04</strong></header><div className="statProjectList">{projects.map(project=><button key={project.id} onClick={()=>go(`#case-${project.id}`)}><em>{project.id}</em><span><b>{project.name}</b><small>{project.cn}</small></span><Arrow/></button>)}</div></aside>
+          <aside className="statPopover projectsPopover"><header><small>SELECTED PROJECTS</small><strong>核心项目 ? 04</strong></header><div className="statProjectList">{projects.map(project=><button key={project.id} onClick={()=>go(`#case-${project.id}`)}><em>{project.id}</em><span><b>{project.name}</b><small>{project.cn}</small></span></button>)}</div></aside>
         </div>
         <div className={`statCard statTools${openStat==='tools'?' isOpen':''}`} tabIndex="0" role="button" aria-expanded={openStat==='tools'} onClick={()=>setOpenStat(openStat==='tools'?null:'tools')} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();setOpenStat(openStat==='tools'?null:'tools')}}}><b>09<sup>+</sup></b><span className="statLabel"><strong>设计工具</strong><small>DESIGN TOOLS</small></span><i>CLICK TO EXPLORE</i>
-          <aside className="statPopover toolsPopover"><header><small>DESIGN WORKFLOW</small><strong>工具矩阵 · 09</strong></header><div className="toolGrid">{toolItems.map(tool=><div key={tool.name}><span className="toolIcon"><img src={tool.icon} alt={`${tool.name} 软件图标`}/></span><b>{tool.name}</b></div>)}</div></aside>
+          <aside className="statPopover toolsPopover"><header><small>DESIGN WORKFLOW</small><strong>工具矩阵 ? 09</strong></header><div className="toolGrid">{toolItems.map(tool=><div key={tool.name}><span className="toolIcon"><img src={tool.icon} alt={`${tool.name} 杞欢鍥炬爣`}/></span><b>{tool.name}</b></div>)}</div></aside>
         </div>
       </div>
     {openStat==='awards'&&<div className="statModalLayer" role="presentation" onClick={()=>setOpenStat(null)}>
       <div className="statModal" role="dialog" aria-modal="true" aria-labelledby="awards-modal-title" onClick={event=>event.stopPropagation()}>
-        <button className="statModalClose" onClick={()=>setOpenStat(null)} aria-label="关闭奖项列表">?</button>
-        <header><small>AWARD EXPERIENCE</small><strong id="awards-modal-title">所获奖项</strong></header>
+        <button className="statModalClose" onClick={()=>setOpenStat(null)} aria-label="鍏抽棴濂栭」鍒楄〃">?</button>
+        <header><small>AWARD EXPERIENCE</small><strong id="awards-modal-title">获奖项</strong></header>
         <ol>{awardItems.map((award,index)=><li key={award}><em>{String(index+1).padStart(2,'0')}</em><span>{award}</span></li>)}</ol>
       </div>
     </div>}
     </section>
 
     <section className="portfolioIndex shell" id="index">
-      <div className="indexTop" data-reveal><div className="sectionCode"><span>03</span> / CONTENTS</div><p>PORTFOLIO INDEX<br/>作品目录</p></div>
+      <div className="indexTop" data-reveal><div className="sectionCode"><span>03</span> / CONTENTS</div><p>PORTFOLIO INDEX<br/>浣滃搧鐩綍</p></div>
       <div className="indexVisual" data-reveal>
         <div className="indexGallery">
           {indexProjects.map(project=><button className="indexCard" key={project.id} onClick={()=>go(project.target)} onPointerMove={event=>{
             const rect=event.currentTarget.getBoundingClientRect()
             event.currentTarget.style.setProperty('--index-x',`${event.clientX-rect.left}px`)
             event.currentTarget.style.setProperty('--index-y',`${event.clientY-rect.top}px`)
-          }} aria-label={`前往 ${project.name} 项目`}>
+          }} aria-label={`鍓嶅線 ${project.name} 椤圭洰`}>
             <span className="indexNumber">{project.id}</span>
             <img src={project.indexImage} alt=""/>
             <span className="indexShade" aria-hidden="true"/>
             <span className="indexCursor" aria-hidden="true">OPEN</span>
             <span className="indexLabel"><small>{project.type}</small><b>{project.name}</b><em>{project.cn}</em></span>
-            <Arrow/>
+            
           </button>)}
         </div>
       </div>
@@ -295,15 +291,16 @@ function App(){
         <h2>SELECTED<br/><i>OBJECTS</i><sup>04</sup></h2>
         <p>2024—2026<br/>PRODUCT / ID / CONCEPT</p>
       </div>
+      <div className="workPrompt" aria-hidden="true"><span>点击以查看详情</span><i/></div>
       <div className="projects">
         {projects.map(project=><article className={`project project--${project.id}`} id={`case-${project.id}`} key={project.id} style={{'--accent':project.color}} data-reveal>
           <button className="projectMedia" onPointerMove={event=>{
             const rect = event.currentTarget.getBoundingClientRect()
             event.currentTarget.style.setProperty('--card-x',`${event.clientX-rect.left}px`)
             event.currentTarget.style.setProperty('--card-y',`${event.clientY-rect.top}px`)
-          }} onClick={()=>setActive(project)} aria-label={`查看 ${project.name} 项目`}>
+          }} onClick={()=>setActive(project)} aria-label={`鏌ョ湅 ${project.name} 椤圭洰`}>
             <img src={project.image} alt={project.cn}/><span className="projectTint"/>
-            <span className="projectNo">{project.id}</span><span className="projectCursor" aria-hidden="true">VIEW</span><span className="projectAction">VIEW PROJECT <Arrow/></span>
+            <span className="projectNo">{project.id}</span><span className="projectCursor" aria-hidden="true">VIEW</span><span className="projectAction">VIEW PROJECT </span>
           </button>
           <div className="projectLine shell">
             <div><span>{project.type}</span><span>{project.year}</span></div>
@@ -322,34 +319,44 @@ function App(){
       <div className="contactLight"/>
       <div className="shell contactInner" data-reveal>
         <div className="sectionCode"><span>06</span> / CONTACT</div>
-        <p>HAVE AN IDEA?</p>
         <h2>LET'S MAKE IT<br/><i>VISIBLE.</i></h2>
-        <a href="mailto:2735901862@qq.com">START A CONVERSATION <Arrow/></a>
-        <div className="contactMeta"><span>2735901862@qq.com</span><span>WECHAT / Gjl2735901862</span><span>155 9178 6656</span><button onClick={()=>go('#top')}>BACK TO TOP ↑</button></div>
+        <div className="contactAction">
+          <a href="mailto:2735901862@qq.com">START A CONVERSATION</a>
+          <div className="contactMeta"><span>2735901862@qq.com</span><span>WECHAT / Gjl2735901862</span><span>155 9178 6656</span><button onClick={()=>go('#top')}>BACK TO TOP</button></div>
+        </div>
       </div>
     </section>
 
     {contactCard&&<div className="contactCardLayer" role="presentation" onClick={event=>{if(event.target===event.currentTarget)setContactCard(false)}}>
       <section className="contactCard" role="dialog" aria-modal="true" aria-labelledby="contact-card-title">
-        <button className="contactCardClose" onClick={()=>setContactCard(false)} aria-label="关闭联系方式">×</button>
+        <button className="contactCardClose" onClick={()=>setContactCard(false)} aria-label="关闭联系方式">?</button>
         <div className="contactCardCode">GJL / CONTACT</div>
         <h2 id="contact-card-title">LET'S<br/><i>CONNECT.</i></h2>
         <div className="contactCardRows">
-          <a href="tel:15591786656"><span>PHONE</span><b>155 9178 6656</b><Arrow/></a>
-          <a href="mailto:2735901862@qq.com"><span>EMAIL</span><b>2735901862@qq.com</b><Arrow/></a>
+          <a href="tel:15591786656"><span>PHONE</span><b>155 9178 6656</b></a>
+          <a href="mailto:2735901862@qq.com"><span>EMAIL</span><b>2735901862@qq.com</b></a>
           <p><span>WECHAT</span><b>Gjl2735901862</b></p>
         </div>
       </section>
     </div>}
 
-    {active&&<div className="modal" role="dialog" aria-modal="true" aria-label={`${active.name} 项目详情`}>
-      <button className="modalClose" onClick={()=>setActive(null)}>CLOSE <span>×</span></button>
+    {active&&<div className="modal" role="dialog" aria-modal="true" aria-label={`${active.name} 椤圭洰璇︽儏`}>
+      <button className="modalClose" onClick={()=>setActive(null)}>CLOSE <span>脳</span></button>
       <div className="modalHead shell"><div><span>{active.id} / CASE STUDY</span><h2>{active.name}</h2></div><p>{active.cn}<br/><small>{active.type} · {active.year}</small></p></div>
       <div className="modalInfo shell"><p>{active.note}</p><div>{active.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div>
-      <div className="casePages shell">{active.pages.map((page,index)=><figure className={index===0||index%5===0?'caseWide':''} key={page}><img src={pageSrc(page)} alt={`${active.cn} - 作品集第 ${page} 页`}/><figcaption>{String(page).padStart(2,'0')} / {String(active.pages.at(-1)).padStart(2,'0')}</figcaption></figure>)}</div>
+      <div className="casePages shell">{active.pages.map((page)=><figure className="casePage" key={page}><img src={pageSrc(page)} alt={`Case page ${page}`}/><figcaption>{String(page).padStart(2,'0')} / {String(active.pages.at(-1)).padStart(2,'0')}</figcaption></figure>)}</div>
     </div>}
+    <footer className="siteFooter"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">陕ICP备2026020805号</a></footer>
   </main>
 }
 
 createRoot(document.getElementById('root')).render(<App/>)
+
+
+
+
+
+
+
+
 
